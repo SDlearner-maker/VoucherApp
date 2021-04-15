@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_simple_coupons',
     'crispy_forms',
     'users.apps.UsersConfig',
     'homepage.apps.HomepageConfig',
