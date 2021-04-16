@@ -8,3 +8,6 @@ def home(requests):
 
 def about(requests):
     return render(requests, 'homepage/about.htm', {'title': 'about'})
+
+# def profile(requests):
+#     return 
