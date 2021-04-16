@@ -1,18 +1,18 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 from .forms import UserRegisterForm
 
 def register(request):
     if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
+        form = PasswordChangeForm(user=request.user, data=request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, 'Account has been successfully created, you can now Log In')
-            return redirect('login')
+            messages.success(request, 'Account\'s password has been changed, you can now Log In with the new password')
+            return redirect('voucher-homepage')
     else:
-        form = UserRegisterForm()   
+        form = PasswordChangeForm(request.user)   
     
     return render(request, 'users/register.htm', {'form': form})
 
